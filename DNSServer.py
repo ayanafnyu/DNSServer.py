@@ -43,7 +43,7 @@ def decrypt_with_aes(encrypted_data, password, salt):
     decrypted_data = f.decrypt(encrypted_data) #call the Fernet decrypt method
     return decrypted_data.decode('utf-8')
 
-salt = 'Tandon' # Remember it should be a byte-object
+salt = b'Tandon' # Remember it should be a byte-object
 password = 'af5462@nyu.edu'
 input_string = 'AlwaysWatching'
 
@@ -99,8 +99,8 @@ dns_records = {
 
 def run_dns_server():
     # Create a UDP socket and bind it to the local IP address (what unique IP address is used here, similar to webserver lab) and port (the standard port for DNS)
-    server_socket = socket.socket(socket.AF_INET, socket.SOCKET_DGRAM) # Research this
-    server_socket.bind(('127.0.01', 53))
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # Research this
+    server_socket.bind(('127.0.0.1', 53))
 
     while True:
         try:
